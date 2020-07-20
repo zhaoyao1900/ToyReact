@@ -55,11 +55,11 @@ export let ToyReact = {
             element.setAttribute(name,attributes[name])
         }
 
-        let insertChildern = (children) => {
+        let insertChildren = (children) => {
 
             for (let child of children) {
                 if(typeof child === "object" && child instanceof Array){
-                    insertChildern(child)
+                    insertChildren(child)
                 }else{
                     if ( !(child instanceof Component)  && 
                          !(child instanceof ElementWrapper) &&
