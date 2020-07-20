@@ -58,12 +58,13 @@ export let ToyReact = {
         let insertChildern = (children) => {
 
             for (let child of children) {
-                if(typeof child === Object && child instanceof Array){
+                if(typeof child === "object" && child instanceof Array){
                     insertChildern(child)
                 }else{
-                    if ( (!child instanceof Component)  && 
-                         (!child instanceof ElementWrapper) &&
-                         (!child instanceof ElementWrapper))
+                    if ( !(child instanceof Component)  && 
+                         !(child instanceof ElementWrapper) &&
+                         !(child instanceof TextWrapper)
+                         )
                         child = String(child)
                     if (typeof child === "string") {
                         child = new TextWrapper(type)
@@ -74,10 +75,10 @@ export let ToyReact = {
             }
 
         }
-
+        insertChildren(children);
         return element
     },
-    render(vdom, element, ){
+    render(vdom, element ){
         vdom.mountTo(element);
     },
 };
