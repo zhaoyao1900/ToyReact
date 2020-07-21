@@ -3,7 +3,7 @@ class ElementWrapper{
     constructor(type){
         this.root = document.createElement(type);
     }
-    setAttribute(name,value){
+    setAttribute(name, value){
         this.root.setAttribute(name, value);
     }
     appendChild(vChild){
@@ -37,7 +37,7 @@ export class Component{
         vdom.mountTo(parent)
     }
     appendChild(vChild){
-        this.children.push(child)
+        this.children.push(vChild)
     }
 }
 
@@ -61,13 +61,16 @@ export let ToyReact = {
                 if(typeof child === "object" && child instanceof Array){
                     insertChildren(child)
                 }else{
+                    
                     if ( !(child instanceof Component)  && 
                          !(child instanceof ElementWrapper) &&
                          !(child instanceof TextWrapper)
-                         )
-                        child = String(child)
+                       ){
+                            child = String(child)
+                    }
+                    
                     if (typeof child === "string") {
-                        child = new TextWrapper(type)
+                        child = new TextWrapper(child)
                     }
 
                     element.appendChild(child)
