@@ -4,8 +4,8 @@ class MyComponent extends Component {
 
     render(){
         return <div>
-            <span>hello</span>
-            <span>world</span>
+            {/* <span>hello</span>
+            <span>world</span> */}
             <span>{this.children}</span>
         </div>
     }
